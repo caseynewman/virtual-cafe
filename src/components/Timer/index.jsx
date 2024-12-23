@@ -26,9 +26,25 @@ export default function PomodoroTimer() {
         return () => clearInterval(timer);
     }, [isActive, timeLeft, isWorkSession]);
 
+    // const formatTime = (seconds) => {
+
+    // };
+
     return (
-        <>
-        
-        </>
+        <div className="timer-container">
+            <h2>{isWorkSession ? "Work" : "Break"}</h2>
+            <h3>{timeLeft}</h3>
+            <div className="timer-buttons">
+                <button onClick={() => setIsActive(!isActive)}>
+                    {isActive ? "Pause" : "Start"}
+                </button>
+                <button onClick={() => {
+                    setIsActive(false);
+                    setTimeLeft(isWorkSession ? WORK_TIME : BREAK_TIME);
+                }}>
+                    Reset
+                </button>
+            </div>
+        </div>
     )
 }
