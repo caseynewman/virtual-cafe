@@ -2,6 +2,7 @@
 // counts down
 // 25 minute work, or 5-10 minute break?
 
+import { useEffect } from "react";
 import { useState } from "react";
 
 export default function PomodoroTimer() {
@@ -12,7 +13,18 @@ export default function PomodoroTimer() {
     const [isActive, setIsActive] = useState(false);
     const [isWorkSession, setIsWorkSession] = useState(true);
 
-    
+    useEffect(() => {
+        let timer;
+        if (isActive && timeLeft > 0) {
+            timer = setInterval(() => {
+                setTimeLeft((prevTime) => prevTime - 1);
+            }, 1000);
+        } else if (timeLeft === 0) {
+            setIsWorkSession((prev) => !prev);
+            setTimeLeft(isWorkSession ? BREAK_TIME : WORK_TIME);
+        }
+        return () => clearInterval(timer);
+    }, [isActive, timeLeft, isWorkSession]);
 
     return (
         <>
