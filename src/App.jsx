@@ -1,4 +1,5 @@
 import './App.css'
+import PomodoroTimer from './components/Timer'
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
         <h1>Virtual Cafe</h1>
       </header>
       <main>
-
+        <PomodoroTimer />
       </main>
       <footer>
 
