@@ -33,7 +33,7 @@ export default function PomodoroTimer() {
 
     return (
         <div className="timer-container">
-            <h2>{isWorkSession ? "Work" : "Break"}</h2>
+            <h2>{isWorkSession ? "Working" : "Taking a break"}</h2>
             <h3>{timeLeft}</h3>
             <div className="timer-buttons">
                 <button onClick={() => setIsActive(!isActive)}>
