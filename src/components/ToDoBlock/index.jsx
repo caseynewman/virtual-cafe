@@ -3,7 +3,7 @@
 // check boxes
 // move to botton of list when checked?
 
-export default function ToDoList() {
+export default function ToDoBlock() {
 
     return (
         <>
