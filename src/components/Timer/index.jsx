@@ -1,6 +1,7 @@
 // pomodoro style timer
 // counts down
 // 25 minute work, or 5-10 minute break?
+// buttons at top for work + short break (5min) + long break (10min)
 
 import { useEffect } from "react";
 import { useState } from "react";
@@ -27,14 +28,16 @@ export default function PomodoroTimer() {
         return () => clearInterval(timer);
     }, [isActive, timeLeft, isWorkSession]);
 
-    // const formatTime = (seconds) => {
-
-    // };
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes.toString().padStart(2, '0')} : ${secs.toString().padStart(2, '0')}`
+    };
 
     return (
         <div className="timer-container">
             <h2>{isWorkSession ? "Working" : "Taking a break"}</h2>
-            <h3>{timeLeft}</h3>
+            <h3>{formatTime(timeLeft)}</h3>
             <div className="timer-buttons">
                 <button onClick={() => setIsActive(!isActive)}>
                     {isActive ? "Pause" : "Start"}
